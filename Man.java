@@ -3,6 +3,7 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.geom.Ellipse2D;
+import java.util.ArrayList;
 
 import javax.swing.JComponent;
 
@@ -11,13 +12,12 @@ import javax.swing.JComponent;
  * @author Krisi Hristova
  *
  */
-public class Man extends JComponent
+public class Man extends JComponent 
 {
 	private Ellipse2D.Double head;    //don't need (x,y) coordinates, bc they are already set in JCompent and it it inherited
 	private Rectangle leftArm, rightArm, leftLeg, rightLeg, body;
 	private int dx = 0; 
 	private int dy= 0;
-	//add an array list of Balls 
 	
 	
 	
@@ -55,6 +55,22 @@ public class Man extends JComponent
 	public void update()
 	{
 		setLocation(getX() + dx, getY() + dy);
+		if(getX() <= 0)
+		{
+			setDX(0);
+		}
+		if(getX() >= 590)
+		{
+			setDX(0);
+		}
+		if(getY() <= 0)
+		{
+			setDY(0);
+		}
+		if(getY() >= 570)
+		{
+			setDY(0);
+		}
 	}
 	
 
@@ -70,6 +86,7 @@ public class Man extends JComponent
 		g2.fill(rightArm);
 		g2.fill(leftLeg);
 		g2.fill(rightLeg);
+		
 
 
 	}
